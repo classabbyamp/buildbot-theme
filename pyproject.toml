@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "buildbot-void-theme"
+authors = [
+    {name = "classabbyamp", email = "dev@placeviolette.net"}
+]
+description = "Void Linux theme for Buildbot"
+readme = "README.md"
+requires-python = ">=3.11"
+keywords = []
+classifiers = [
+    "License :: OSI Approved :: BSD License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+dynamic = ["version"]
+dependencies = [
+    "buildbot~=4.0",
+]
+
+[project.optional-dependencies]
+publish = [
+    "twine",
+]
+
+[project.entry-points."buildbot.www"]
+void_view = "buildbot_void_view:ep"
+
+[project.urls]
+Repository = "https://github.com/classabbyamp/buildbot-void-theme"
+
+[tool.setuptools]
+packages = ["buildbot_void_view"]
+
+[tool.setuptools.package-data]
+buildbot_void_view = ["VERSION", "static/*"]
+
+[tool.setuptools.dynamic]
+version = {file = "buildbot_void_view/VERSION"}
